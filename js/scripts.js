@@ -19,15 +19,27 @@ var divide = function(number1, number2) {
 // Everything below this line is UI (or front-end) logic:
 
 $(document).ready(function(){
-  $("form#add").submit(function(event){
+  $("form#calculator").submit(function(event){
     event.preventDefault();
-    var number1 = parseInt($("#add1").val());
-    var number2 = parseInt($("#add2").val());
-    var result = add(number1, number2);
-    $("#add-output").text(result).show();
+    var number1 = parseInt($("#input1").val());
+    var number2 = parseInt($("#input2").val());
+    var operator = $("input:radio[name=operator]:checked").val();
+    var result;
+    if (operator === "add") {
+      result = add(number1, number2);
+    } else if (operator === "subtract") {
+      result = subtract(number1, number2);
+    } else if (operator === "multiply") {
+      result = multiply(number1, number2);
+    } else if (operator === "divide") {
+      result = divide(number1, number2);
+    }
+    $("#output").text(result);
   });
+});
 
-  $("form#subtract").submit(function(event){
+/*
+  $("form#subtract").submit(function(){
     event.preventDefault();
     var number1 = parseInt($("#subtract1").val());
     var number2 = parseInt($("#subtract2").val());
@@ -35,7 +47,7 @@ $(document).ready(function(){
     $("#subtract-output").text(result).show();
   });
 
-  $("form#multiply").submit(function(event){
+  $("form#multiply").submit(function(){
     event.preventDefault();
     var number1 = parseInt($("#multiply1").val());
     var number2 = parseInt($("#multiply2").val());
@@ -43,7 +55,7 @@ $(document).ready(function(){
     $("#multiply-output").text(result).show();
   });
 
-  $("form#divide").submit(function(event){
+  $("form#divide").submit(function(){
     event.preventDefault();
     var number1 = parseInt($("#divide1").val());
     var number2 = parseInt($("#divide2").val());
@@ -51,3 +63,4 @@ $(document).ready(function(){
     $("#divide-output").text(result).show();
   });
 });
+*/
